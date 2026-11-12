@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISBAT University | Student Registration</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      background: #f3f5f9;
+      color: #1c1c28;
+      line-height: 1.5;
+    }
+    header {
+      background: #12306b;
+      color: #ffffff;
+      text-align: center;
+      padding: 1.25rem 1rem;
+    }
+    header h1 { margin: 0; font-size: 1.8rem; }
+    header p { margin: 0.25rem 0 0; }
+    nav {
+      background: #0b1f4a;
+      text-align: center;
+    }
+    nav a {
+      display: inline-block;
+      color: #ffffff;
+      padding: 0.8rem 1.4rem;
+      text-decoration: none;
+    }
+    nav a:hover, nav a:focus { background: #b3122b; }
+    main { padding: 1.5rem 1rem; }
+    h2 { text-align: center; color: #12306b; }
+
+    /* Centred form, maximum width 700px */
+    form {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    fieldset {
+      border: 2px solid #12306b;
+      border-radius: 6px;
+      padding: 1rem 1.25rem 1.25rem;
+      margin: 0 0 1.25rem;
+      background: #ffffff;
+    }
+    legend {
+      font-weight: bold;
+      color: #12306b;
+      padding: 0 0.5rem;
+    }
+    label { display: block; margin-top: 0.8rem; font-weight: bold; }
+    input[type="text"], input[type="email"], input[type="tel"],
+    input[type="date"], select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.55rem;
+      margin-top: 0.25rem;
+      font-size: 1rem;
+      border: 1px solid #8a93a6;
+      border-radius: 4px;
+    }
+    .choice { margin-top: 0.4rem; }
+    .choice label { display: inline; margin: 0 1rem 0 0.35rem; font-weight: normal; }
+    .group-label { margin: 0.8rem 0 0; font-weight: bold; }
+    .buttons { text-align: center; }
+    button {
+      font-size: 1rem;
+      padding: 0.65rem 1.8rem;
+      margin: 0 0.4rem;
+      border: 0;
+      border-radius: 4px;
+      color: #ffffff;
+      background: #12306b;
+      cursor: pointer;
+    }
+    button[type="reset"] { background: #5b6478; }
+    button:hover, button:focus { background: #b3122b; }
+    footer {
+      background: #0b1f4a;
+      color: #ffffff;
+      text-align: center;
+      padding: 1rem;
+    }
+    footer p { margin: 0.2rem 0; }
+  </style>
+</head>
+<body>
+
+  <header id="home">
+    <h1>ISBAT University</h1>
+    <p>Online Student Registration Portal</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#programmes">Programmes</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+    <h2>New Student Registration</h2>
+
+    <form id="regForm" action="#" method="post">
+
+      <fieldset>
+        <legend>Personal Details</legend>
+
+        <label for="fullname">Full name</label>
+        <input type="text" id="fullname" name="fullname" autocomplete="name" required>
+
+        <label for="studentid">Student ID (format: ISB-2026-001)</label>
+        <input type="text" id="studentid" name="studentid"
+               pattern="ISB-[0-9]{4}-[0-9]{3}"
+               title="Use the format ISB-YYYY-NNN, for example ISB-2026-001"
+               placeholder="ISB-2026-001" required>
+
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+
+        <label for="phone">Phone number (format: 07XXXXXXXX)</label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel"
+               pattern="07[0-9]{8}"
+               title="Enter 10 digits starting with 07, for example 0771234567"
+               placeholder="0771234567" required>
+
+        <p class="group-label" id="gender-label">Gender</p>
+        <div role="radiogroup" aria-labelledby="gender-label">
+          <span class="choice">
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">Male</label>
+          </span>
+          <span class="choice">
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+          </span>
+          <span class="choice">
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label>
+          </span>
+        </div>
+
+        <label for="nationality">Nationality</label>
+        <select id="nationality" name="nationality" autocomplete="country-name" required>
+          <option value="">Select nationality</option>
+          <option value="Uganda">Uganda</option>
+          <option value="Kenya">Kenya</option>
+          <option value="Tanzania">Tanzania</option>
+          <option value="Rwanda">Rwanda</option>
+          <option value="South Sudan">South Sudan</option>
+        </select>
+
+        <label for="dob">Date of birth</label>
+        <input type="date" id="dob" name="dob" autocomplete="bday" required>
+      </fieldset>
+
+      <fieldset id="programmes">
+        <legend>Programme Details</legend>
+
+        <label for="programme">Programme of study</label>
+        <select id="programme" name="programme" required>
+          <option value="">Select a programme</option>
+          <option value="BSc-IT">Bachelor of Science in Information Technology</option>
+          <option value="BSc-CS">Bachelor of Science in Computer Science</option>
+          <option value="BSc-SE">Bachelor of Science in Software Engineering</option>
+          <option value="BBA">Bachelor of Business Administration</option>
+          <option value="BPLM">Bachelor of Procurement and Logistics Management</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Course Units (First Semester)</legend>
+        <p>Select at least one course unit.</p>
+
+        <div class="choice">
+          <input type="checkbox" id="unit1" name="units" value="COM101">
+          <label for="unit1">COM101 – Communication Skills</label>
+        </div>
+        <div class="choice">
+          <input type="checkbox" id="unit2" name="units" value="ITE101">
+          <label for="unit2">ITE101 – Introduction to Information Technology</label>
+        </div>
+        <div class="choice">
+          <input type="checkbox" id="unit3" name="units" value="MAT101">
+          <label for="unit3">MAT101 – Business Mathematics</label>
+        </div>
+        <div class="choice">
+          <input type="checkbox" id="unit4" name="units" value="MGT101">
+          <label for="unit4">MGT101 – Principles of Management</label>
+        </div>
+        <div class="choice">
+          <input type="checkbox" id="unit5" name="units" value="ACC101">
+          <label for="unit5">ACC101 – Introduction to Accounting</label>
+        </div>
+        <div class="choice">
+          <input type="checkbox" id="unit6" name="units" value="ENT101">
+          <label for="unit6">ENT101 – Entrepreneurship Fundamentals</label>
+        </div>
+      </fieldset>
+
+      <div class="buttons">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </div>
+
+    </form>
+  </main>
+
+  <footer id="contact">
+    <p>Contact: Registrar's Office, ISBAT University, Kampala, Uganda</p>
+    <p>&copy; 2026 ISBAT University | Registration No: YOUR-REG-NUMBER</p>
+  </footer>
+
+  <script>
+    // HTML has no built-in "at least one checkbox" rule, so require one here.
+    var units = document.querySelectorAll('input[name="units"]');
+    function checkUnits() {
+      var any = Array.prototype.some.call(units, function (u) { return u.checked; });
+      units[0].setCustomValidity(any ? "" : "Please select at least one course unit.");
+    }
+    Array.prototype.forEach.call(units, function (u) {
+      u.addEventListener("change", checkUnits);
+    });
+    document.getElementById("regForm").addEventListener("reset", function () {
+      setTimeout(checkUnits, 0);
+    });
+    checkUnits();
+  </script>
+
+</body>
+</html>
